@@ -2,21 +2,39 @@
 //******************TEST EARLY AND OFTEN USING console.log() ******************
 //****************** SERIOUSLY TEST USING console.log()!!! ******************
 /* global $ */
-
-var gif_url = "https://api.giphy.com/v1/gifs/search?q=puppy&rating=pg&api_key=dc6zaTOxFJmzC"
-
-
-$("#search-button").click(function(){
-  $.ajax({
-    url: gif_url,
-    method: "GET",
-    success: function(response) {
+//var gif_url = "https://api.giphy.com/v1/gifs/search?q=" + searchTerm + "&rating=pg&api_key=dc6zaTOxFJmzC"
+//$("#search-button").click(function(){
+  
+  //var searchTerm = $("input").val()
+//  search(searchTerm);
+  
+  //$.ajax({
+    //url: gif_url,
+    //method: "GET",
+    //success: function(response) {
     
     
         //console.log(response.data);
         
-        $("body").append("<img src=" + reponse.data.images.fixed_height_still.url + ">");
-    }  
-  });
-});
+       // $("body").append("<img src='" + response.data[0].images.fixed_height_still.url + "'>");
+    //}  
+  //});
+//});
 
+
+$("#search-button").click(function(){ 
+    var userInput = $("#search-term").val();
+    
+    
+    var request_url = "https://api.giphy.com/v1/gifs/search?q=" + userInput + "&rating=pg&api_key=dc6zaTOxFJmzC";
+    
+    $.ajax({
+      url: request_url,
+      method: "GET",
+      success: function(response) {
+           var pic_url = response.data[0].images.original.url;
+           $('body').append('<img src=' + pic_url + '>');
+      },
+    }); 
+    
+});
