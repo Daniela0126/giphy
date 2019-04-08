@@ -5,7 +5,10 @@ body {
 }
 
 .navbar-brand {
-    color: white;	
+    font-size: 40px;
+    font-family: 'Josefin Sans', sans-serif;
+    color: white;
+    background-color: white;
 }
 
 footer {

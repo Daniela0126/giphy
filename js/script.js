@@ -32,9 +32,21 @@ $("#search-button").click(function(){
       url: request_url,
       method: "GET",
       success: function(response) {
-           var pic_url = response.data[0].images.original.url;
-           $('body').append('<img src=' + pic_url + '>');
+          // var pic_url = response.data[14].images.fixed_width.url;
+           
+           response.data.forEach(function(n){
+              $('#images').append('<img src=' + n.images.fixed_width.url + '>');
+
+// debugger;
+           });
       },
-    }); 
+    });
     
+});
+
+$("#search-button").click(function(){
+  function emptyImages(){
+  $("#search-term").empty();
+  $("#images").empty();
+}
 });
